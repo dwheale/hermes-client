@@ -92,7 +92,7 @@ const WaitListTable = (props) => {
                 })
                 sendMessage({
                   to: rowData.phone,
-                  body: `Your table at ${currentUser.currentRestaurant}`,
+                  message: `Your table at ${currentUser.restaurantName} is ready`,
                 })
               },
               position: 'row',

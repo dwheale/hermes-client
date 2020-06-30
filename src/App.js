@@ -57,11 +57,13 @@ const App = () => {
         <CssBaseline/>
         <Notifier />
         {
-          isUserLoading ? (
-              <LoadingSpinner />
-          ) : currentUser ? (
-              <SideMenu />
-          ) : null
+          // isUserLoading ? (
+          //     <LoadingSpinner />
+          // ) : currentUser ? (
+          //     <SideMenu />
+          // ) : null
+
+            isUserLoading ? (<LoadingSpinner/>) : null
         }
         <main className={ classes.mainContent }>
           <Container maxWidth='lg' className={ classes.container }>

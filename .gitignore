@@ -24,3 +24,10 @@ yarn-debug.log*
 yarn-error.log*
 
 console.log
+
+# firestore related
+.firebaserc
+firebase.json
+firestore.indexes.json
+firestore.rules
+/functions

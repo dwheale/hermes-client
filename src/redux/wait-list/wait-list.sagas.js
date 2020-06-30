@@ -9,12 +9,13 @@ import {
   sendWaitListMessageSuccess,
   updateCustomerInWaitFailure, updateCustomerInWaitSuccess,
 } from './wait-list.actions'
-import { sendMessage } from './wait-list.utils'
 import { enqueueSnackbar } from '../notification-snacks/notifications.actions'
 import { formatWaitListCustomer } from '../../utils/wait-list.utils'
 import { store } from '../store'
 import { db } from '../../utils/firebase.utils'
 import { currentDate } from '../../utils/date-time.utils'
+import { functions } from '../../utils/firebase.utils'
+
 
 function* enqueueSnack(message, type = 'info', duration = 3000) {
   yield put(enqueueSnackbar({
@@ -154,14 +155,25 @@ export function* updateCustomerInWaitList(customer) {
 export function* waitListFailure(error) {
   yield enqueueSnack(`An error occurred: ${ error.payload }`, 'error', 5000)
 }
-
+/*
+  This function works at sending the message but throws an error regarding unhandled promise rejections.
+  Need to investigate that further.
+ */
 export function* sendWaitMessage({ payload: { data } }) {
+    const sendMessage = functions.httpsCallable('sendMessage')
   try {
-    const response = yield sendMessage(undefined, data)
-    yield put(sendWaitListMessageSuccess(response))
+    const response = yield call(sendMessage, data)
+    yield console.log('%cresponse received: ', 'color:blue', response)
+    if(response != null) {
+      yield console.log('***************response: ', response)
+      yield put(sendWaitListMessageFailure(response.data.message))
+      return
+    }
   } catch (error) {
-    yield put(sendWaitListMessageFailure(error))
+      console.log(error)
   }
+
+    yield put(sendWaitListMessageSuccess('message sent!'))
 }
 
 export function* onAddCustomerToWaitStart() {

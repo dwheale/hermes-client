@@ -1,3 +1,5 @@
+import * as firebase from 'firebase'
+
 const NAME_EXISTS = 'Party name already exists'
 
 export const addCustomerToWaitList = (waitList, customerToAdd) => {
@@ -22,15 +24,21 @@ export const removeCustomerFromWaitList = (waitList, customerToRemove) => {
   }
 }
 
-export async function sendMessage(url = 'http://hermes.whealetech.com:5000/messenger/send', data) {
-  let response = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-  if (response.status === 201) {
-    return await response.json()
-  }
+export async function sendMessage(url = null, data) {
+  const sendMessage = firebase.functions().httpsCallable('sendMessage')
+  const response = sendMessage(data)
+
 }
+
+// export async function sendMessage(url = 'http://hermes.whealetech.com:5000/messenger/send', data) {
+//   let response = await fetch(url, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(data)
+//   })
+//   if (response.status === 201) {
+//     return await response.json()
+//   }
+// }
