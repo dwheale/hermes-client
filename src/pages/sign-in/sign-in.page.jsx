@@ -131,7 +131,6 @@ const SignIn = ({ emailSignInStart, errorMessage }) => {
               <Button
                   variant='contained'
                   size='large'
-
                   className={classes.loginBtn}
                   onClick={()=>handleSubmit()}
                   disabled={isButtonDisabled}

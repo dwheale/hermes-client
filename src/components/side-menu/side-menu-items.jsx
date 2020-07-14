@@ -21,28 +21,21 @@ const SideMenuItems = [
     link: '/wait',
     Icon: TimerIcon,
   },
-    /*
   {
     name: 'My Account',
     Icon: AccountBalanceIcon,
     items: [
       {
         name: 'Profile',
-        link: '/organization-profile',
+        link: '/profile',
       },
       {
         name: 'Subscription',
         link: '/subscription',
       },
-      {
-        name: 'Users',
-        link: '/users',
-      },
-
     ],
   },
 
-     */
 ]
 
 

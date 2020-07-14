@@ -12,7 +12,7 @@ import IconExpandMore from '@material-ui/icons/ExpandMore'
 import SideMenuItemRef from './side-menu-item-ref.component'
 
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles( theme =>
     createStyles({
       menuItem: {
         '&.active': {
@@ -23,7 +23,7 @@ const useStyles = makeStyles(() =>
         },
       },
       menuItemIcon: {
-        color: '#97c05c',
+        color: theme.palette.primary.light,
       },
     }),
 )

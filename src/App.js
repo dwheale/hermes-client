@@ -19,6 +19,7 @@ import { db } from './utils/firebase.utils'
 import { currentDate } from './utils/date-time.utils'
 import { receiveWaitListData } from './redux/wait-list/wait-list.actions'
 import ForgotPassword from './pages/forgot-password/forgot-password.page'
+import CustomerAccountPage from './pages/customer-account/customer-account.page'
 
 const App = () => {
   const classes = useStyles()
@@ -57,13 +58,11 @@ const App = () => {
         <CssBaseline/>
         <Notifier />
         {
-          // isUserLoading ? (
-          //     <LoadingSpinner />
-          // ) : currentUser ? (
-          //     <SideMenu />
-          // ) : null
-
-            isUserLoading ? (<LoadingSpinner/>) : null
+          isUserLoading ? (
+              <LoadingSpinner />
+          ) : currentUser ? (
+              <SideMenu />
+          ) : null
         }
         <main className={ classes.mainContent }>
           <Container maxWidth='lg' className={ classes.container }>
@@ -72,6 +71,7 @@ const App = () => {
               <PrivateRoute path='/dashboard' component={ Dashboard }/>
               <PrivateRoute path='/wait' component={ WaitList }/>
               <PrivateRoute path='/customers' component={ CustomerListPage }/>
+              <PrivateRoute path='/profile' component={ CustomerAccountPage } />
               {
                 isUserLoading ? null : (
                     <>
