@@ -31,3 +31,4 @@ firebase.json
 firestore.indexes.json
 firestore.rules
 /functions
+/src/utils/firebase.utils.js
