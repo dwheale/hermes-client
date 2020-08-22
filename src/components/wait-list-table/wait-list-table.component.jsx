@@ -39,6 +39,11 @@ const WaitListTable = (props) => {
             onRowAdd: (newCustomer) =>
                 new Promise((resolve) => {
                   console.log('%cnewCustomer Row Data: ', 'color:red', newCustomer)
+                  console.log('partyName:', newCustomer.partyName)
+                  if(newCustomer.timeArrived) {
+                    console.log('timeArrived:', newCustomer.timeArrived)
+                  }
+
                   setTimeout(() => {
                     resolve()
                     addCustomer(newCustomer)
@@ -106,8 +111,12 @@ const WaitListTable = (props) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  addCustomer: (newCustomer) => dispatch(addCustomerToWaitStart(newCustomer)),
+  addCustomer: (newCustomer) => {
+    console.log(newCustomer)
+    dispatch(addCustomerToWaitStart(newCustomer))
+  },
   updateCustomer: (newCustomer) => {
+    console.log(newCustomer)
     dispatch(updateCustomerInWaitStart(newCustomer))
   },
   removeCustomer: (customer) => dispatch(removeCustomerFromWaitStart(customer)),

@@ -80,6 +80,7 @@ const SideMenu = () => {
 
   return (
       <>
+      {/* Floating Action Button */}
       <Fab
           color='primary'
           aria-label='menu'

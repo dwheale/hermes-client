@@ -18,7 +18,7 @@ const Footer = () => {
   return (
       <Box className={ classes.footer }>
         <Typography>
-          &copy; { currentYear } Whealetech, LLC | Project Hermes v0.0.3a | Use indicates acceptance of the
+          &copy; { currentYear } Whealetech, LLC | Project Hermes v0.0.4a | Use indicates acceptance of the
           <Link href='https://whealetech.com/preview-license'>
             Alpha / Beta Software License Agreement
           </Link>

@@ -7,6 +7,9 @@ const WaitList = () => {
     {
       title: 'Res Time', field: 'reservationTime', type: 'time', render: rowData => {
         if (rowData.reservationTime) {
+          if(typeof rowData.reservationTime === 'object') {
+            rowData.reservationTime = rowData.reservationTime.toMillis()
+          }
           return formatTime12(rowData.reservationTime)
         } else {
           return '-'
@@ -19,6 +22,9 @@ const WaitList = () => {
     {
       title: 'Arrived', field: 'timeArrived', type: 'time', render: rowData => {
         if (rowData.timeArrived) {
+          if(typeof rowData.timeArrived === 'object') {
+            rowData.timeArrived = rowData.timeArrived.toMillis()
+          }
           return formatTime12(rowData.timeArrived)
         } else {
           return '-'
