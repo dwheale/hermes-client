@@ -38,12 +38,6 @@ const WaitListTable = (props) => {
           editable={ {
             onRowAdd: (newCustomer) =>
                 new Promise((resolve) => {
-                  console.log('%cnewCustomer Row Data: ', 'color:red', newCustomer)
-                  console.log('partyName:', newCustomer.partyName)
-                  if(newCustomer.timeArrived) {
-                    console.log('timeArrived:', newCustomer.timeArrived)
-                  }
-
                   setTimeout(() => {
                     resolve()
                     addCustomer(newCustomer)
